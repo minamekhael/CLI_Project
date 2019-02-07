@@ -1,0 +1,5 @@
+#! usr/bin/env ruby
+
+require './lib/egypt_gods'
+
+EgyptGods::CLI.new.call
