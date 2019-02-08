@@ -9,8 +9,8 @@ class EgyptGods::CLI
   
   def list_gods
     @gods = EgyptGods::Gods.all
-    @gods.each_with_index(1) do |god, i|
-      puts "#{i}. #{god.name}"
+    @gods.each.with_index(1) do |god, i|
+    puts "#{i}. #{god.name} - #{god.info}"
     end
   end
   
