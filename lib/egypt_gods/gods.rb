@@ -16,7 +16,7 @@ class EgyptGods::Gods
     god_2.name = "Aken"
     god_2.info = "Custodian of the boat which ferried souls across Lily Lake to the Field of Reeds in the afterlife. He slept until he was needed by Hraf-Hef, the surly Divine Ferryman. His name only appears in the Book of the Dead."
     
-    [god_1 god_2]
+    [god_1, god_2]
   end
 
 end

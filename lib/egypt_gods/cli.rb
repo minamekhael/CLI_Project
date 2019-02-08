@@ -8,34 +8,27 @@ class EgyptGods::CLI
   end
   
   def list_gods
-    puts <<-DOC
-    1.
-    2.
-    3.
-    4.
-    5.
-    6.
-    Exit
-    DOC
+    @gods = EgyptGods::Gods.all
+    @gods.each_with_index(1) do |god, i|
+      puts "#{i}. #{god.name}"
+    end
   end
   
   def menu
     input = nil
-    puts "Enter the number of the god you want more information on, type list to see list, or exit to leave:"
     while input != "exit"
-    input = gets.strip.downcase
-    case input
-    when "1"
-      puts "more info on god 1.."
-    when "2"
-      puts "more info on god 2.."
-    when "list"
-      list_gods
-    else
-      puts "Invalid response"
+      puts "Enter the number of the god you want more information on, type list to see list, or exit:"
+      input = gets.strip.downcase
+      
+      if input.to_i > 0
+        puts @gods[input.to_i-1]
+      elsif input == "list"
+        list_gods
+      else
+        puts "Invalid response."
+      end
     end
   end
-end
 
   def goodbye
     puts "see you next time"
