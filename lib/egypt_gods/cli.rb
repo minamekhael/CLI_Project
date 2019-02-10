@@ -7,10 +7,15 @@ class EgyptGods::CLI
   end
   
   def list_gods
-    @gods = EgyptGods::Gods.all
-    @gods.each.with_index(1) do |god, i|
-    puts "#{i}. #{god.name}"
-    end
+    EgyptGods::Scraper.scrape
+    EgyptGods::Scraper.scrape_god
+    EgyptGods::Scraper.display_god
+  end
+  
+  def list_series(input)
+    EgyptGods::Scraper.scrape
+    EgyptGods::Scraper.scrape_info
+    EgyptGods::Scraper.display_info
   end
   
   def menu
