@@ -1,7 +1,6 @@
 class EgyptGods::CLI
   
   def call
-    puts "hello world"
     list_gods
     menu
     goodbye
@@ -10,7 +9,7 @@ class EgyptGods::CLI
   def list_gods
     @gods = EgyptGods::Gods.all
     @gods.each.with_index(1) do |god, i|
-    puts "#{i}. #{god.name} - #{god.info}"
+    puts "#{i}. #{god.name}"
     end
   end
   
@@ -31,6 +30,6 @@ class EgyptGods::CLI
   end
 
   def goodbye
-    puts "see you next time"
+    puts "Hope you learned something"
   end
 end
