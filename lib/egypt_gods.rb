@@ -1,5 +1,6 @@
 require_relative "./egypt_gods/version"
 require_relative "./egypt_gods/cli"
+require_relative "./egypt_gods/god"
 require_relative "./egypt_gods/scraper"
 require "nokogiri"
 require "open-uri"

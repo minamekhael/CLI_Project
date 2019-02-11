@@ -1,21 +1,21 @@
 class EgyptGods::CLI
   
   def call
-    list_gods
+    EgyptGods::Scraper.scrape_gods
+    display_gods
     menu
     goodbye
   end
   
-  def list_gods
-    EgyptGods::Scraper.scrape
-    EgyptGods::Scraper.scrape_god
-    EgyptGods::Scraper.display_god
+ def display_gods
+    God.all.each.with_index(1) do |god, i|
+      puts "   #{i}.   #{god.name}"
+    end
   end
   
-  def list_series(input)
-    EgyptGods::Scraper.scrape
-    EgyptGods::Scraper.scrape_info
-    EgyptGods::Scraper.display_info
+  def display_info(input)
+    index = input.to_i - 1
+    puts "#{God.all[index].info}"
   end
   
   def menu
@@ -28,7 +28,7 @@ class EgyptGods::CLI
         puts @gods[input.to_i-1]
       elsif input == "list"
         list_gods
-      else
+      elsif input != "exit"
         puts "Invalid response."
       end
     end
