@@ -9,13 +9,12 @@ class EgyptGods::CLI
   
  def display_gods
     God.all.each.with_index(1) do |god, i|
-      puts "   #{i}.   #{god.name}"
+      puts "#{i}.   #{god.name}"
     end
   end
   
   def display_info
     God.all.each.with_index(1) do |god, i|
-      puts "#{i}. #{god.info}"
     end
   end
   
@@ -25,8 +24,9 @@ class EgyptGods::CLI
       puts "Enter the number of the god you want more information on, type list to see list, or exit:"
       input = gets.strip.downcase
       
-      if input.to_i > 0
-        puts display_info[input.to_i-1]
+     if input.to_i > 0
+        the_god = display_info[input.to_i-1]
+        puts "#{the_god.name} - #{the_god.info}"
       elsif input == "list"
         display_gods
       elsif input != "exit"
