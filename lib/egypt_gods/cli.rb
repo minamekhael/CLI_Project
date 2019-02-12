@@ -13,9 +13,10 @@ class EgyptGods::CLI
     end
   end
   
-  def display_info(input)
-    index = input.to_i - 1
-    puts "#{God.all[index].info}"
+  def display_info
+    God.all.each.with_index(1) do |god, i|
+      puts "#{i}. #{god.info}"
+    end
   end
   
   def menu
@@ -25,9 +26,9 @@ class EgyptGods::CLI
       input = gets.strip.downcase
       
       if input.to_i > 0
-        puts @gods[input.to_i-1]
+        puts display_info[input.to_i-1]
       elsif input == "list"
-        list_gods
+        display_gods
       elsif input != "exit"
         puts "Invalid response."
       end
